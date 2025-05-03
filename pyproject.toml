@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "SongRecommendation"
+version = "0.1.0"
+description = ""
+authors = ["ThanhNhan140903 <phanthithanhnhan1409@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pandas = "1.5.2"
+black = "^22.1.0"
+fastapi = "^0.115.8"
+psutil = "^7.0.0"
+implicit = "^0.7.2"
+
+[tool.black]
+line-length = 79
+exclude = '''
+/(
+	\.git
+| _build
+)/
+'''
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
