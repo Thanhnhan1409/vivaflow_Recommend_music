@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import Union
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import implicit
 import pandas as pd
 
@@ -48,7 +49,13 @@ recommender.fit_artist_model(user_artist)
 
 
 app = FastAPI()
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # hoặc ["http://localhost:3000"] nếu bạn muốn giới hạn
+    allow_credentials=True,
+    allow_methods=["*"],  # Cho phép POST, GET, OPTIONS, v.v.
+    allow_headers=["*"],
+)
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
@@ -91,7 +98,7 @@ def read_item(schema: ReqRecommendSimilarTracks):
 
         # return song ids separate by comma ","
         return {
-            "result": ','.join(songs)
+            "result": songs
         }
     except Exception as err:
         print("Error", err)
@@ -121,7 +128,7 @@ def read_item(schema: ReqRecommendSimilarArtistSchema):
 
         # return artist ids separate by comma ","
         return {
-            "result": ','.join(similar_artists)
+            "result": similar_artists
         }
     except: 
         print("Error")
