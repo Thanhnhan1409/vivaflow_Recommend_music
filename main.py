@@ -11,18 +11,18 @@ from SongRecommendation.recommender import ArtistRetriever, ImplicitRecommender,
 from schema.request import ReqRecommendSimilarArtistSchema, ReqRecommendSimilarTracks
 
 # load user songs matrix D:/DUT/FinalProject/My_Project\SongRecommendation\extracted-data\artist
-user_songs = load_user_songs(Path("D:/DUT/FinalProject/My_Project/SongRecommendation/extracted-data/track/playlist_track.dat"))
-user_artist = load_user_artist(Path("D:/DUT/FinalProject/My_Project/SongRecommendation/extracted-data/artist/playlist_artist.dat"))
+user_songs = load_user_songs(Path("./extracted-data/track/playlist_track.dat"))
+user_artist = load_user_artist(Path("./extracted-data/artist/playlist_artist.dat"))
 
 # instantiate song retriever
 track_retriever = TrackRetriever()
-track_retriever.load_num_to_track_id(Path("D:/DUT/FinalProject/My_Project/SongRecommendation/extracted-data/track/num_to_track_id.dat"))
-track_retriever.load_track_id_to_num(Path("D:/DUT/FinalProject/My_Project/SongRecommendation/extracted-data/track/track_id_to_num.dat"))
+track_retriever.load_num_to_track_id(Path("./extracted-data/track/num_to_track_id.dat"))
+track_retriever.load_track_id_to_num(Path("./extracted-data/track/track_id_to_num.dat"))
 
 # instantiate artist retriever
 artist_retriever = ArtistRetriever()
-artist_retriever.load_num_to_artist_id(Path("D:/DUT/FinalProject/My_Project/SongRecommendation/extracted-data/artist/num_to_artist_id.dat"))
-artist_retriever.load_artist_id_to_num(Path("D:/DUT/FinalProject/My_Project/SongRecommendation/extracted-data/artist/artist_id_to_num.dat"))
+artist_retriever.load_num_to_artist_id(Path("./extracted-data/artist/num_to_artist_id.dat"))
+artist_retriever.load_artist_id_to_num(Path("./extracted-data/artist/artist_id_to_num.dat"))
 
 
 # instantiate ALS using implicit
